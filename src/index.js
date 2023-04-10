@@ -1,13 +1,13 @@
-import './helpers/dotenv.js'
+import './utils/dotenv.js'
 
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import helmet from 'helmet'
 
-import logger from './helpers/logger.js'
+import logger from './utils/logger.js'
 import router from './routes/root.js'
-import { notFound, errorHandler } from './helpers/errors.js'
+import { notFound, errorHandler } from './utils/errors.js'
 
 const port = Number(process.env.PORT)
 
@@ -23,5 +23,5 @@ app.use(notFound)
 app.use(errorHandler)
 
 app.listen(port, () => 
-  logger.info('Application started at http://localhost:${process.env.PORT}'),
+  logger.info(`Server running on port ${port}`)
 )
