@@ -1,11 +1,27 @@
+import './helpers/dotenv.js'
+
 import express from 'express'
+import morgan from 'morgan'
+import cors from 'cors'
+import helmet from 'helmet'
+
+import logger from './helpers/logger.js'
+import router from './routes/root.js'
+import { notFound, errorHandler } from './helpers/errors.js'
+
+const port = Number(process.env.PORT)
 
 const app = express()
 
-const port = 3000
+app.use(morgan(process.env.MORGAN_LOG))
+app.use(cors({ origin: process.env.CORS_ORGIN }))
+app.use(helmet())
 
-app.get('/', (req, res) => {
-  res.send({ msg: 'Andrew Escamilla' })
-})
+app.use('/', router)
 
-app.listen(port)
+app.use(notFound)
+app.use(errorHandler)
+
+app.listen(port, () => 
+  logger.info('Application started at http://localhost:${process.env.PORT}'),
+)
