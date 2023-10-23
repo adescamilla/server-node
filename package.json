@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Basic REST API Server",
   "main": "dist/index.js",
-  "type": "module",
   "scripts": {
     "build": "babel ./src --out-dir ./build",
     "start": "node ./build/index.js",
