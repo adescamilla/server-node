@@ -1,4 +1,4 @@
-import './utils/dotenv.js'
+import './utils/config.js'
 
 import express from 'express'
 import morgan from 'morgan'
