@@ -6,7 +6,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 
 import logger from './utils/logger.js'
-import router from './routes/root.js'
+import router from './routes/'
 import { notFound, errorHandler } from './utils/errors.js'
 
 const port = Number(process.env.PORT)
